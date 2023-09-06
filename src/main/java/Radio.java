@@ -1,73 +1,86 @@
 public class Radio {
-    public int currentVolume;
+    //звук
+    private int currentVolume;
+    private int maxVolume = 100;
+    private int minVolume = 0;
+
 
     public int getCurrentVolume() {
         return currentVolume;
     }
 
     public void setCurrentVolume(int newCurrentVolume) {
-        if (newCurrentVolume < 0) {
+        if (newCurrentVolume < minVolume) {
             return;
         }
-        if (newCurrentVolume > 100) {
+        if (newCurrentVolume > maxVolume) {
             return;
         }
-        currentVolume = newCurrentVolume;
+        this.currentVolume = newCurrentVolume;
     }
 
     public void toMaxVolume() {
-        currentVolume = 100;
+        currentVolume = maxVolume;
     }
 
     public void toMinVolume() {
-        currentVolume = 0;
+        currentVolume = minVolume;
     }
 
     public void riseVolume() {
-        if (currentVolume <= 100) {
+        if (currentVolume <= maxVolume) {
             currentVolume++;
         }
     }
 
     public void decreaseVolume() {
-        if (currentVolume >= 0) {
+        if (currentVolume >= minVolume) {
             currentVolume--;
         }
     }
 
+//станция
 
-    public int currentStation;
+    private int currentStation = 10;
+    private int maxStation = 9;
+    private int minStation = 0;
+
+    public Radio() {
+    }
+    public Radio(int QuantilyStation){
+        this.currentStation = QuantilyStation;
+    }
 
     public int getCurrentStation() {
         return currentStation;
     }
 
     public void setCurrentStation(int newStation) {
-        if (newStation > 9) {
-            newStation = 0;
+        if (newStation > maxStation) {
+            newStation = minStation;
         }
-        if (newStation < 0) {
-            newStation = 9;
+        if (newStation < minStation) {
+            newStation = maxStation;
         }
         currentStation = newStation;
     }
 
     public void toMaxStation() {
-        currentStation = 9;
+        currentStation = maxStation;
     }
 
     public void toMinStation() {
-        currentStation = 0;
+        currentStation = minStation;
     }
 
     public void nextStation() {
-        if (currentStation < 9) {
+        if (currentStation < maxStation) {
             currentStation++;
         }
     }
 
     public void prevStation() {
-        if (currentStation > 0) {
+        if (currentStation > minStation) {
             currentStation--;
         }
     }

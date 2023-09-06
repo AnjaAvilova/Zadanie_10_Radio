@@ -1,6 +1,6 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
+//звук
 public class RadioTest {
     @Test
     public void ShouldVolume() {
@@ -87,7 +87,13 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
+//Станция
 
+    @Test
+    public void shouldQuantilyStation(){
+        Radio raid = new Radio(15);
+        Assertions.assertEquals(15, raid.getCurrentStation());
+    }
 
 
     @Test
